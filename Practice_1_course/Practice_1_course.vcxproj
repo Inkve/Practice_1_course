@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Practice_1_course.cpp" />
+    <ClCompile Include="Structer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Structer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
