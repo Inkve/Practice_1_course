@@ -7,9 +7,9 @@ int main()
     setlocale(LC_ALL, "Russian");
     int m, n;
     std::cout << "Введите размер первой части массива, m = ";
-    std::cin >> m;
+    m = Input_Number("m");
     std::cout << "Введите размер второй части массива, n = ";
-    std::cin >> n;
+    n = Input_Number("n");
     data_array arr(m, n);
     print_separator();
     arr.print_initial();

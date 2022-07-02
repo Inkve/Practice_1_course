@@ -5,8 +5,10 @@
 #include <Windows.h>
 #include <iostream>
 #include <ctime>
+#include <string>
 
 int Get_Random_Number(int, int);
+int Input_Number(std::string);
 void print_separator();
 
 class data_array {

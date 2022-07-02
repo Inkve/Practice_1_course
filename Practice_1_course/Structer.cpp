@@ -4,6 +4,29 @@ int Get_Random_Number(int min, int max) {
     return min + rand() % (max - min + 1);
 };
 
+int Input_Number(std::string name) {
+    int number;
+    while (true) {
+        std::cin >> number;
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << "Неправильно! Введите число! " + name + " = ";
+        }
+        else {
+            if (number <= 0) {
+                std::cin.clear();
+                std::cin.ignore();
+                std::cout << "Неправильно! Введите положительное число! " + name + " = ";
+            }
+            else {
+                break;
+            };
+        };
+    };
+    return number;
+};
+
 void print_separator() {
     HWND hwnd = GetConsoleWindow();
     RECT rc;
