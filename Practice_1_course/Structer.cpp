@@ -43,19 +43,20 @@ void print_separator() {
 data_array::data_array(int _m, int _n) {
     m = _m;
     n = _n;
+    data = new int[m + n];
     srand(time(NULL));
     for (int i = 0; i < m + n; i++) {
-        data.push_back(Get_Random_Number(1, 50));
+        data[i] = (Get_Random_Number(1, 50));
     };
 };
 
 void data_array::print_initial() {
     std::cout << "Изначальный массив:" << std::endl;
     for (int i = 0; i < m; i++) {
-        std::cout << "\x1b[31m" << std::setw(3) << data[i] << "\x1b[36m";
+        std::cout << "\x1b[31m" << data[i] << "\x1b[36m" << " ";
     };
     for (int i = m; i < m + n; i++) {
-        std::cout << "\x1b[32m" << std::setw(3) << data[i] << "\x1b[36m";
+        std::cout << "\x1b[32m" << data[i] << "\x1b[36m" << " ";
     };
     std::cout << std::endl;
 };
@@ -73,10 +74,14 @@ void data_array::cyclic_shift(int change) {
 void data_array::print_modified() {
     std::cout << "Измененный массив:" << std::endl;
     for (int i = 0; i < n; i++) {
-        std::cout << "\x1b[32m" << std::setw(3) << data[i] << "\x1b[36m";
+        std::cout << "\x1b[32m" << data[i] << "\x1b[36m" << " ";
     };
     for (int i = n; i < m + n; i++) {
-        std::cout << "\x1b[31m" << std::setw(3) << data[i] << "\x1b[36m";
+        std::cout << "\x1b[31m" << data[i] << "\x1b[36m" << " ";
     };
     std::cout << std::endl;
+};
+
+data_array::~data_array() {
+    delete[] data;
 };
