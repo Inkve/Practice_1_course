@@ -15,7 +15,7 @@ int main()
     arr.print_initial();
     print_separator();
     print_separator();
-    arr.cyclic_shift(n);
+    arr.cyclic_shift();
     arr.print_modified();
     print_separator();
 };

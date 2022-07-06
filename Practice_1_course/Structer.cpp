@@ -1,30 +1,21 @@
 #include "Structer.h"
 
-int Get_Random_Number(int min, int max) {
-    return min + rand() % (max - min + 1);
-};
-
 int Input_Number(std::string name) {
-    int number;
+    float number;
     while (true) {
-        std::cin >> number;
+        if ((std::cin >> number).good() && (1 <= number) && (number < 11)) {
+            return int(number);
+        };
         if (std::cin.fail()) {
             std::cin.clear();
-            std::cin.ignore();
-            std::cout << "Неправильно! Введите число! " + name + " = ";
+            std::cout << "Неверный ввод! Введите число! " + name + " = ";
         }
         else {
-            if (number <= 0) {
-                std::cin.clear();
-                std::cin.ignore();
-                std::cout << "Неправильно! Введите положительное число! " + name + " = ";
-            }
-            else {
-                break;
-            };
-        };
+            std::cin.clear();
+            std::cout << "Значение не в диапазоне! " + name + " = ";
+        }
+        std::cin.ignore(100, '\n');
     };
-    return number;
 };
 
 void print_separator() {
@@ -33,7 +24,7 @@ void print_separator() {
     GetClientRect(hwnd, &rc);
     int width = rc.right;
     std::cout << "\x1b[35m";
-    for (int i = 0; i < width * 0.125 - 1; i++) {
+    for (int i = 0; i < width * 0.139 - 1; i++) {
         std::cout << "#";
     };
     std::cout << "\x1b[36m";
@@ -45,8 +36,10 @@ data_array::data_array(int _m, int _n) {
     n = _n;
     data = new int[m + n];
     srand(time(NULL));
+    const int min = 1;
+    const int max = 50;
     for (int i = 0; i < m + n; i++) {
-        data[i] = (Get_Random_Number(1, 50));
+        data[i] = min + rand() % (max - min + 1);
     };
 };
 
@@ -61,7 +54,8 @@ void data_array::print_initial() {
     std::cout << std::endl;
 };
 
-void data_array::cyclic_shift(int change) {
+void data_array::cyclic_shift() {
+    int change = n;
     for (int i = 0; i < change; i++) {
         int temp = data[m + n - 1];
         for (int j = m + n - 2; j >= 0; j--) {
